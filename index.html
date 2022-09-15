@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function createMeeting() {
+        let meetingLink = "xxxxyxxx".replace(/[xy]/g, function (c) {
+          var r = (Math.random() * 16) | 0,
+            v = c == "x" ? r : (r & 0x3) | 0x8;
+          return v.toString(16);
+        });
+        window.location.href =
+          "http://" + window.location.host + "?meetingId=" + meetingLink;
+      }
+      window.onload = function () {
+        if (localStorage.getItem("hasCodeRunBefore") === null) {
+          createMeeting();
+          localStorage.setItem("hasCodeRunBefore", true);
+        }
+      };
+
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+
+      script.addEventListener("load", function (event) {
+        const meeting = new VideoSDKMeeting();
+        const meetingID = window.location.href.split("=")[1];
+        console.log(meetingID);
+        const config = {
+          name: "User",
+          apiKey: "66f8312a-cd7a-41af-825c-d409e366669e",
+          meetingId: meetingID,
+          redirectOnLeave: window.location.href,
+          micEnabled: true,
+          webcamEnabled: true,
+          participantCanToggleSelfWebcam: true,
+          participantCanToggleSelfMic: true,
+
+          chatEnabled: true,
+          screenShareEnabled: true,
+          pollEnabled: true,
+          whiteBoardEnabled: true,
+          raiseHandEnabled: true,
+
+          recordingEnabled: true,
+          recordingWebhookUrl: "https://www.videosdk.live/callback",
+          participantCanToggleRecording: true,
+
+          joinScreen: {
+            visible: true, // Show the join screen ?
+            title: "Meeting", // Meeting title
+            meetingUrl: window.location.href, // Meeting joining url
+          },
+          pin: {
+            allowed: true,
+            layout: "SPOTLIGHT",
+          },
+        };
+
+        meeting.init(config);
+      });
+
+      script.src = "srcipt.js";
+
+      document.getElementsByTagName("head")[0].appendChild(script);
+    </script>
+  </body>
+</html>
