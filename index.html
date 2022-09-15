@@ -47,6 +47,20 @@
           whiteBoardEnabled: true,
           raiseHandEnabled: true,
 
+          recording: {
+            enabled: true,
+            webhookUrl: "",
+            aswDirPath: "",
+            autoStart: false,
+            theme: "light",
+
+            layout: {
+              type: "SIDEBAR",
+              priority: "PIN",
+              gridSize: 3,
+            },
+          },
+
           recordingEnabled: true,
           recordingWebhookUrl: "https://www.videosdk.live/callback",
           participantCanToggleRecording: true,
@@ -59,6 +73,14 @@
           pin: {
             allowed: true,
             layout: "SPOTLIGHT",
+          },
+
+          permissions: {
+            toggleRecording: true,
+            askToJoin: true,
+            toggleParticipantWebcam: false,
+            toggleParticipantMic: false,
+            toggleParticipantScreenshare: false,
           },
         };
 
