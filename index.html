@@ -40,6 +40,7 @@
           webcamEnabled: true,
           participantCanToggleSelfWebcam: true,
           participantCanToggleSelfMic: true,
+          theme: "DEFAULT", // DARK || LIGHT || DEFAULT
 
           chatEnabled: true,
           screenShareEnabled: false,
@@ -52,7 +53,7 @@
             webhookUrl: "",
             aswDirPath: "",
             autoStart: false,
-            theme: "light",
+            theme: "LIGHT", // DARK || LIGHT || DEFAULT
 
             layout: {
               type: "SIDEBAR",
@@ -73,9 +74,13 @@
           text: "Connecting to the meeting...",
         },
 
-          // recordingEnabled: true,
-          // recordingWebhookUrl: "https://www.videosdk.live/callback",
-          // participantCanToggleRecording: true,
+        // leftScreen: {
+        //   actionButton: {
+        //     label: "Ayekoo Confrence",
+        //     href: window.location.href,
+        //   },
+        //   rejoinButtonEnabled: true,
+        // },
 
           joinScreen: {
             visible: true, // Show the join screen ?
@@ -96,6 +101,7 @@
             canCreatePoll: true,
             drawOnWhiteboard: true,
             toggleWhiteboard: true,
+            removeParticipant: true,
           },
         };
 
